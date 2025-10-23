@@ -43,9 +43,7 @@ public class ECommerceSystem {
         return products.stream().filter(p -> p.getId() == id).findFirst().orElse(null);
     }
 
-    // ✅ Fixed and improved logic for stock checking
     public Order placeOrder(Customer customer, List<OrderItem> items) {
-        // 1️⃣ Check stock availability for each product
         for (OrderItem it : items) {
             if (!it.getProduct().hasStock(it.getQuantity())) {
                 throw new IllegalArgumentException(
@@ -55,12 +53,10 @@ public class ECommerceSystem {
             }
         }
 
-        // 2️⃣ Deduct stock for purchased products
         for (OrderItem it : items) {
             it.getProduct().decreaseStock(it.getQuantity());
         }
 
-        // 3️⃣ Create new order and save it
         Order order = new Order(customer);
         items.forEach(order::addItem);
         orders.add(order);

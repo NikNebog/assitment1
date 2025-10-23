@@ -89,8 +89,6 @@ public class Main {
             switch (x) {
                 case "1" -> sys.getProducts().forEach(Product::displayInfo);
                 case "2" -> placeOrder(sys, c);
-
-                // ✅ FIXED PART — now filters orders correctly by customer ID
                 case "3" -> {
                     System.out.println("--- Your Orders ---");
                     sys.getOrders().stream()

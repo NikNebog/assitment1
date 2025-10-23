@@ -22,7 +22,6 @@ public class Order {
 
     public void addItem(OrderItem item) { items.add(item); }
 
-    // ✅ Added getter for accessing customer from Main.java
     public Customer getCustomer() {
         return customer;
     }
